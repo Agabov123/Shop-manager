@@ -6,7 +6,15 @@ require_relative 'lib/database_connection'
 DatabaseConnection.connect('shop_manager')
 
 # Perform a SQL query on the database and get the result set.
-sql = 'SELECT id, title FROM albums;'
+sql = 'SELECT * FROM stocks;'
+result = DatabaseConnection.exec_params(sql, [])
+
+# Print out each record from the result set .
+result.each do |record|
+  p record
+end
+
+sql = 'SELECT * FROM orders;'
 result = DatabaseConnection.exec_params(sql, [])
 
 # Print out each record from the result set .
